@@ -1,0 +1,43 @@
+server:
+  port: 8085
+  connection-timeout: 5s
+spring:
+  application:
+    name: search-service
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.43.178:9300
+  jackson:
+    default-property-inclusion: non_null
+  rabbitmq:
+    host: 192.168.43.178
+    username: chinalife
+    password: cl123
+    virtual-host: /chinalife
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+cl:
+  jwt:
+    pubKeyPath: E:/rsa/rsa.pub # 公钥地址
+    cookieName: CL_TOKEN
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 150000
+ribbon:
+  ConnectionTimeOut: 60000 #ribbon连接超时时长
+  ReadTimeOut: 60000 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务器重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务器重试次数
+  eager-load:
+    enabled: true
+    clients:
+      - clerk-service
+      - client-service
+      - insurance-service

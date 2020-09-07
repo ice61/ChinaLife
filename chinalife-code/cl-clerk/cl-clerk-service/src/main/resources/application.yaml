@@ -1,0 +1,34 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: clerk-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/chinalife
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: 192.168.43.178
+    username: chinalife
+    password: cl123
+    virtual-host: /chinalife
+    template:
+      retry:
+        enabled: true
+        initial-interval: 10000ms
+        max-interval: 30000ms
+        multiplier: 2
+    publisher-confirms: true
+  redis:
+    host: 192.168.43.178
+  jackson:
+    time-zone: GMT+8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+cl:
+  jwt:
+    pubKeyPath: E:/rsa/rsa.pub # 公钥地址
+    cookieName: CL_TOKEN

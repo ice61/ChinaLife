@@ -1,0 +1,47 @@
+server:
+  port: 8082
+  connection-timeout: 5s
+spring:
+  application:
+    name: manauth-service
+  redis:
+    host: 192.168.43.178
+  datasource:
+    url: jdbc:mysql://localhost:3306/chinalife
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: 192.168.43.178
+    username: chinalife
+    password: cl123
+    virtual-host: /chinalife
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+
+cl:
+  jwt:
+    secret: cl@Login(Auth}*^31)&chinalife%
+    pubKeyPath: E:/rsa/rsa.pub # 公钥地址
+    priKeyPath: E:/rsa/rsa.pri # 私钥地址
+    expire: 30 # 过期时间,单位分钟
+    cookieName: CL_TOKEN
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 150000
+ribbon:
+  ConnectionTimeOut: 60000 #ribbon连接超时时长
+  ReadTimeOut: 60000 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务器重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务器重试次数
+  eager-load:
+    enabled: true
+    clients:
+      - auth-service
+      - clerk-service

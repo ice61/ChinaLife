@@ -1,0 +1,52 @@
+server:
+  port: 8088
+  connection-timeout: 5s
+spring:
+  application:
+    name: pan-service
+  redis:
+    host: 192.168.43.178
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.43.178:9300
+  rabbitmq:
+    host: 192.168.43.178
+    username: chinalife
+    password: cl123
+    virtual-host: /chinalife
+  #项目完成后datasource可以删掉
+  datasource:
+    url: jdbc:mysql://localhost:3306/chinalife
+    username: root
+    password: 123
+    driver-class-name: com.mysql.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10Mb
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 150000
+hdfs:
+  psth: hdfs://192.168.43.210:9000
+  user: root
+
+cl:
+  jwt:
+    pubKeyPath: E:/rsa/rsa.pub
+    cookieName: CL_TOKEN
+  hadoop:
+    path: hdfs://192.168.43.210:9000
+    user: root
+  worker:
+    workerId: 1
+    dataCenterId: 1

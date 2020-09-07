@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  connection-timeout: 5s
+spring:
+  application:
+    name: upload-service
+  servlet:
+    multipart:
+      max-file-size: 5MB
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+fdfs:
+  so-timeout: 2500
+  connect-timeout: 600
+  thumb-image:
+    width: 60
+    height: 60
+  tracker-list: # tracker地址
+    - 192.168.43.178:22122
+cl:
+  upload:
+    baseUrl: http://image.chinalife.com/
+    allowTypes:
+      - image/jpeg
+      - image/png
+      - image/bmp
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 150000
+ribbon:
+  ConnectionTimeOut: 60000 #ribbon连接超时时长
+  ReadTimeOut: 60000 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务器重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务器重试次数

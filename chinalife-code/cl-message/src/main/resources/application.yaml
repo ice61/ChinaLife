@@ -1,0 +1,18 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: message-service
+  rabbitmq:
+    host: 192.168.43.178
+    username: chinalife
+    password: cl123
+    virtual-host: /chinalife
+  redis:
+    host: 192.168.43.178
+cl:
+  message:
+    appid: 1400257967
+    appkey: 280d48bca23de50eebe97a35f314fb2b
+    templateId: 421789
+    smsSign: "赵迪的项目实战"

@@ -1,0 +1,59 @@
+server:
+  port: 10000
+  connection-timeout: 10s
+spring:
+  application:
+    name: cl-gateway
+  redis:
+      host: 192.168.43.178
+  servlet:
+    multipart:
+      max-file-size: 10Mb
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 160000
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 0 #当前服务器重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务器重试次数
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true
+  prefix: /api
+  routes:
+    upload-service: /upload/**
+    insurance-service: /insurance/**
+    manauth-service: /manauth/**
+    clerk-service: /clerk/**
+    search-service: /search/**
+    auth-service: /auth/**
+    client-service: /client/**
+    pan-service: /pan/**
+  add-host-header: true
+  sensitive-headers:
+
+cl:
+  jwt:
+    pubKeyPath: E:/rsa/rsa.pub
+    cookieName: CL_TOKEN
+  filter:
+    allowPaths:
+      - /api/clerk/code
+      - /zuul/api/upload/image
+      - /api/manauth/login
+      - /api/clerk/image/code
+      - /api/manauth/logout
+      - /api/manauth/verify
+      - /api/clerk/change/password
+      - /api/clerk/password/code
+      - /api/search/clerk/one

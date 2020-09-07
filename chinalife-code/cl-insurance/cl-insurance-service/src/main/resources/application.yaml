@@ -1,0 +1,41 @@
+server:
+  port: 8081
+  connection-timeout: 5s
+spring:
+  application:
+    name: insurance-service
+  datasource:
+      url: jdbc:mysql://localhost:3306/chinalife?serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+      username: root
+      password: 123
+      driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: 192.168.43.178
+    username: chinalife
+    password: cl123
+    virtual-host: /chinalife
+  jackson:
+    time-zone: GMT+8
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10001/eureka
+cl:
+  jwt:
+    pubKeyPath: E:/rsa/rsa.pub
+    cookieName: CL_TOKEN
+  worker:
+    workerId: 1
+    dataCenterId: 1
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 150000
+ribbon:
+  ConnectionTimeOut: 60000 #ribbon连接超时时长
+  ReadTimeOut: 60000 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务器重试次数
+  MaxAutoRetriesNextServer: 0 #切换服务器重试次数
