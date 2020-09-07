@@ -1,0 +1,42 @@
+.green-button {
+  background-color: #009b62;
+  border: #009b62;
+  transition: all 0.5s;
+}
+
+.green-button:hover {
+  background-color: #0ad98d;
+
+}
+
+.yellow-button {
+  background-color: #ff9a00;
+  border: #ff9a00;
+  transition: all 0.5s;
+}
+
+.yellow-button:hover{
+  background-color: #ff5400;
+}
+
+
+.green-text {
+  color: #009b62;
+  transition: all 0.5s;
+}
+
+.green-text:hover {
+  color: #0ad98d;
+
+}
+
+.yellow-text {
+  color: #ff9a00;
+  transition: all 0.5s;
+}
+
+.yellow-text:hover{
+  color: #ff5400;
+}
+
+
